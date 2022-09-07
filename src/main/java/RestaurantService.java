@@ -32,7 +32,14 @@ public class RestaurantService {
         return restaurants;
     }
 
-    public int calculateOrder(String restaurantName, List<String> orderedItems) {
-        return 0;
+    public int calculateOrder(String restaurantName, List<String> orderedItems) throws restaurantNotFoundException {
+        Restaurant restaurant = findRestaurantByName(restaurantName);
+        int orderValue = 0;
+        for (Item item : restaurant.getMenu()) {
+            if (orderedItems.contains(item.getName())) {
+                orderValue += item.getPrice();
+            }
+        }
+        return orderValue;
     }
 }
