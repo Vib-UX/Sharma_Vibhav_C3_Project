@@ -1,6 +1,9 @@
 import org.junit.jupiter.api.*;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -57,5 +60,14 @@ class RestaurantServiceTest {
         assertEquals(initialNumberOfRestaurants + 1, service.getRestaurants().size());
     }
     // <<<<<<<<<<<<<<<<<<<<ADMIN: ADDING & REMOVING
+
     // RESTAURANTS>>>>>>>>>>>>>>>>>>>>>>>>>>
+    // <<<<<<<<<<<<<<<<<<<<CALCULATE ORDER>>>>>>>>>>>>>>>>>>>>>>>>>>//
+    @Test
+    public void adding_items_should_calculate_correct_order_value() {
+        List<String> itemsToOrder = new ArrayList<>(Arrays.asList("Coffe", "Vegetable lasagne"));
+        int orderValue = service.calculateOrder(restaurant.getName(), itemsToOrder);
+        assertEquals(orderValue, 0);
+    }
+    // <<<<<<<<<<<<<<<<<<<<CALCULATE ORDER>>>>>>>>>>>>>>>>>>>>>>>>>>//
 }
